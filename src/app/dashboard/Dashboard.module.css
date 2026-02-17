@@ -1,0 +1,45 @@
+/* Dashboard Layout */
+.dashboardLayout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f1eb;
+    width: 100%;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 36px 44px;
+    margin-left: 260px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .mainContent {
+        padding: 28px 24px;
+        margin-left: 220px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .dashboardLayout {
+        flex-direction: column;
+    }
+
+    .mainContent {
+        margin-left: 0;
+        margin-top: 56px;
+        padding: 20px 16px;
+        min-height: calc(100vh - 56px);
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .mainContent {
+        padding: 16px 12px;
+    }
+}

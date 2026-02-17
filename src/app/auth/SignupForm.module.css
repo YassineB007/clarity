@@ -1,0 +1,126 @@
+/* SignupForm.module.css */
+
+.signupFormWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  font-family: "Georgia", serif;
+}
+
+/* Card with transparent background */
+.signupFormCard {
+  background-color: rgba(255, 248, 240, 0.85);
+  /* semi-transparent light beige */
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.signupFormCard h2 {
+  color: #2f4f2f;
+  /* dark green */
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.signupInput {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(47, 79, 47, 0.5);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #2f4f2f;
+}
+
+.signupInput::placeholder {
+  color: rgba(47, 79, 47, 0.6);
+}
+
+.signupInput:focus {
+  outline: none;
+  border-color: #2f4f2f;
+  box-shadow: 0 0 5px rgba(47, 79, 47, 0.5);
+}
+
+.signupButton {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f4f2f;
+  color: #f5f0e6;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-weight: bold;
+}
+
+.signupButton:hover {
+  background-color: #1f3a1f;
+  transform: translateY(-1px);
+}
+
+.signupButton:disabled {
+  background-color: rgba(47, 79, 47, 0.4);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.message {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.errorMessage {
+  background-color: rgba(255, 220, 215, 0.7);
+  color: #8b1c1c;
+}
+
+.successMessage {
+  background-color: rgba(200, 230, 200, 0.7);
+  color: #1f3a1f;
+  font-weight: bold;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.passwordWrapper input {
+  margin-bottom: 0;
+  padding-right: 2.5rem;
+}
+
+.toggleButton {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2f4f2f;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.toggleButton:hover {
+  background-color: rgba(47, 79, 47, 0.1);
+}
