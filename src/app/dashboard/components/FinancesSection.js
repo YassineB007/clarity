@@ -29,7 +29,7 @@ export default async function FinancesSection({ userId }) {
     ];
 
     return (
-        <div>
+        <div className={styles.fadeIn}>
             <div className={styles.sectionHeader}>
                 <h1 className={styles.sectionTitle}>Finances</h1>
                 <p className={styles.sectionSubtitle}>

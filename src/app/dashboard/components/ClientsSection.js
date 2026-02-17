@@ -13,7 +13,7 @@ export default async function ClientsSection({ userId }) {
     ];
 
     return (
-        <div>
+        <div className={styles.fadeIn}>
             <div className={styles.sectionHeader}>
                 <h1 className={styles.sectionTitle}>Clients</h1>
                 <p className={styles.sectionSubtitle}>

@@ -39,7 +39,7 @@ export default async function WorkSection({ userId }) {
     };
 
     return (
-        <div>
+        <div className={styles.fadeIn}>
             <div className={styles.sectionHeader}>
                 <h1 className={styles.sectionTitle}>Work</h1>
                 <p className={styles.sectionSubtitle}>

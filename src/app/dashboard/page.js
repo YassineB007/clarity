@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getCurrentUser, logout } from "../../../lib/auth";
 import { redirect } from "next/navigation";
 import Sidebar from "./components/Sidebar";
@@ -6,6 +7,7 @@ import WorkSection from "./components/WorkSection";
 import ClientsSection from "./components/ClientsSection";
 import FinancesSection from "./components/FinancesSection";
 import EducationSection from "./components/EducationSection";
+import SectionSkeleton from "./components/SectionSkeleton";
 import styles from "./Dashboard.module.css";
 
 const SECTIONS = {
@@ -30,7 +32,9 @@ export default async function DashboardPage({ searchParams }) {
     <div className={styles.dashboardLayout}>
       <Sidebar currentSection={sectionKey} />
       <main className={styles.mainContent}>
-        <SectionComponent userId={user.userId} />
+        <Suspense key={sectionKey} fallback={<SectionSkeleton />}>
+          <SectionComponent userId={user.userId} />
+        </Suspense>
       </main>
     </div>
   );

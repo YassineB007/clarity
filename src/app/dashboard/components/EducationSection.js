@@ -55,7 +55,7 @@ export default async function EducationSection({ userId }) {
     }
 
     return (
-        <div>
+        <div className={styles.fadeIn}>
             <div className={styles.sectionHeader}>
                 <h1 className={styles.sectionTitle}>Education</h1>
                 <p className={styles.sectionSubtitle}>
