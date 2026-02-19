@@ -4,6 +4,7 @@ import {
     getTransactions, addTransaction, deleteTransaction,
     getClientRevenue,
 } from "../../../../lib/finances";
+import { SubmitButton, ActionButton } from "./FormButtons";
 import styles from "./Sections.module.css";
 
 export default async function FinancesSection({ userId }) {
@@ -68,7 +69,7 @@ export default async function FinancesSection({ userId }) {
                         />
                     </div>
                     <div className={styles.formField}>
-                        <button type="submit" className={styles.formButton}>Update Budget</button>
+                        <SubmitButton pendingText="Updating...">Update Budget</SubmitButton>
                     </div>
                 </form>
             </div>
@@ -149,7 +150,7 @@ export default async function FinancesSection({ userId }) {
                                             placeholder="Note (optional)"
                                             className={styles.taskFormInput}
                                         />
-                                        <button type="submit" className={styles.taskFormButton}>+ Payment</button>
+                                        <SubmitButton pendingText="Adding..." className={styles.taskFormButton}>+ Payment</SubmitButton>
                                     </form>
                                 )}
                             </div>
@@ -221,7 +222,7 @@ export default async function FinancesSection({ userId }) {
                         </select>
                     </div>
                     <div className={styles.formField}>
-                        <button type="submit" className={styles.formButton}>+ Add Expense</button>
+                        <SubmitButton pendingText="Adding...">+ Add Expense</SubmitButton>
                     </div>
                 </form>
             </div>
@@ -255,13 +256,9 @@ export default async function FinancesSection({ userId }) {
                                 <form action={deleteTransaction} style={{ display: "inline" }}>
                                     <input type="hidden" name="transactionId" value={t.id} />
                                     <input type="hidden" name="userId" value={userId} />
-                                    <button
-                                        type="submit"
-                                        title="Delete expense"
-                                        className={`${styles.actionBtn} ${styles.actionBtnGhost}`}
-                                    >
+                                    <ActionButton className={`${styles.actionBtn} ${styles.actionBtnGhost}`}>
                                         ✕
-                                    </button>
+                                    </ActionButton>
                                 </form>
                             </div>
                         </div>

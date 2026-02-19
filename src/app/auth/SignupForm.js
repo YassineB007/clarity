@@ -1,8 +1,29 @@
 "use client";
 
 import { useActionState, useState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import { signup } from "../../../lib/auth";
 import styles from "./SignupForm.module.css";
+
+function SignupButton({ canSubmit }) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={!canSubmit || pending}
+      className={styles.signupButton}
+    >
+      {pending ? (
+        <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+          <span className={styles.spinner}></span>
+          Creating account...
+        </span>
+      ) : (
+        "Signup"
+      )}
+    </button>
+  );
+}
 
 export default function SignupForm() {
   const [state, formAction] = useActionState(signup, null);
@@ -208,13 +229,7 @@ export default function SignupForm() {
           </div>
         )}
 
-        <button
-          type="submit"
-          disabled={!canSubmit}
-          className={styles.signupButton}
-        >
-          Signup
-        </button>
+        <SignupButton canSubmit={canSubmit} />
       </form>
     </div>
   );

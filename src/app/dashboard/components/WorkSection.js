@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getProjectsWithTasks, getWorkStats, addProject, addTask, toggleTask, deleteTask, deleteProject } from "../../../../lib/work";
 import { getClients } from "../../../../lib/clients";
+import { SubmitButton, ActionButton } from "./FormButtons";
 import styles from "./Sections.module.css";
 
 export default async function WorkSection({ userId }) {
@@ -94,7 +95,7 @@ export default async function WorkSection({ userId }) {
                         <input name="budget" type="number" min="0" step="0.01" placeholder="0.00" className={styles.formInput} />
                     </div>
                     <div className={styles.formField}>
-                        <button type="submit" className={styles.formButton}>+ Add Project</button>
+                        <SubmitButton pendingText="Adding...">+ Add Project</SubmitButton>
                     </div>
                 </form>
             </div>
@@ -145,13 +146,9 @@ export default async function WorkSection({ userId }) {
                                 <form action={deleteProject} style={{ display: "inline" }}>
                                     <input type="hidden" name="projectId" value={project.id} />
                                     <input type="hidden" name="userId" value={userId} />
-                                    <button
-                                        type="submit"
-                                        title="Delete project"
-                                        className={`${styles.actionBtn} ${styles.actionBtnGhost}`}
-                                    >
+                                    <ActionButton className={`${styles.actionBtn} ${styles.actionBtnGhost}`}>
                                         🗑️
-                                    </button>
+                                    </ActionButton>
                                 </form>
                             </div>
                         </div>
@@ -164,28 +161,9 @@ export default async function WorkSection({ userId }) {
                                         <input type="hidden" name="taskId" value={task.id} />
                                         <input type="hidden" name="projectId" value={project.id} />
                                         <input type="hidden" name="userId" value={userId} />
-                                        <button
-                                            type="submit"
-                                            style={{
-                                                width: "22px",
-                                                height: "22px",
-                                                borderRadius: "5px",
-                                                border: task.status === "done"
-                                                    ? "2px solid #10b981"
-                                                    : "2px solid #d0cdc7",
-                                                background: task.status === "done" ? "#10b981" : "transparent",
-                                                cursor: "pointer",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                fontSize: "11px",
-                                                color: "#fff",
-                                                flexShrink: 0,
-                                                padding: 0,
-                                            }}
-                                        >
+                                        <ActionButton className={task.status === "done" ? styles.checkboxDone : styles.checkboxTodo}>
                                             {task.status === "done" ? "✓" : ""}
-                                        </button>
+                                        </ActionButton>
                                     </form>
                                     <div className={styles.listItemDetails}>
                                         <div
@@ -218,13 +196,9 @@ export default async function WorkSection({ userId }) {
                                         <input type="hidden" name="taskId" value={task.id} />
                                         <input type="hidden" name="projectId" value={project.id} />
                                         <input type="hidden" name="userId" value={userId} />
-                                        <button
-                                            type="submit"
-                                            title="Delete task"
-                                            className={`${styles.actionBtn} ${styles.actionBtnGhost}`}
-                                        >
+                                        <ActionButton className={`${styles.actionBtn} ${styles.actionBtnGhost}`}>
                                             ✕
-                                        </button>
+                                        </ActionButton>
                                     </form>
                                 </div>
                             </div>
@@ -247,7 +221,7 @@ export default async function WorkSection({ userId }) {
                                 <option value="urgent">Urgent</option>
                             </select>
                             <input name="dueDate" type="date" className={styles.taskFormSelect} />
-                            <button type="submit" className={styles.taskFormButton}>+ Task</button>
+                            <SubmitButton pendingText="Adding..." className={styles.taskFormButton}>+ Task</SubmitButton>
                         </form>
                     </div>
                 ))

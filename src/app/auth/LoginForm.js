@@ -2,10 +2,27 @@
 
 import { login } from "../../../lib/auth";
 import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import styles from "./LoginForm.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" className={styles.loginButton} disabled={pending}>
+      {pending ? (
+        <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+          <span className={styles.spinner}></span>
+          Logging in...
+        </span>
+      ) : (
+        "Login"
+      )}
+    </button>
+  );
+}
 
 export default function LoginForm() {
   const [state, formAction] = useActionState(login, null);
@@ -90,9 +107,7 @@ export default function LoginForm() {
           </button>
         </div>
 
-        <button type="submit" className={styles.loginButton}>
-          Login
-        </button>
+        <LoginButton />
 
         {/* 👇 Added this */}
         <p style={{ marginTop: "10px", textAlign: "center" }}>

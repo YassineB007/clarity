@@ -136,3 +136,25 @@
 .toggleButton:hover {
   background-color: rgba(47, 79, 47, 0.1);
 }
+
+.loginButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(245, 240, 230, 0.3);
+  border-top-color: #f5f0e6;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
+}

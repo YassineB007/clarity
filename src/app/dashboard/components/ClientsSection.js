@@ -1,4 +1,5 @@
 import { getClients, getClientStats, addClient, deleteClient } from "../../../../lib/clients";
+import { SubmitButton, ActionButton } from "./FormButtons";
 import styles from "./Sections.module.css";
 
 export default async function ClientsSection({ userId }) {
@@ -56,7 +57,7 @@ export default async function ClientsSection({ userId }) {
                         <input name="company" placeholder="Company name" className={styles.formInput} />
                     </div>
                     <div className={styles.formField}>
-                        <button type="submit" className={styles.formButton}>+ Add Client</button>
+                        <SubmitButton pendingText="Adding...">+ Add Client</SubmitButton>
                     </div>
                 </form>
             </div>
@@ -100,13 +101,9 @@ export default async function ClientsSection({ userId }) {
                                 <form action={deleteClient} style={{ display: "inline" }}>
                                     <input type="hidden" name="clientId" value={client.id} />
                                     <input type="hidden" name="userId" value={userId} />
-                                    <button
-                                        type="submit"
-                                        title="Delete client"
-                                        className={`${styles.actionBtn} ${styles.actionBtnGhost}`}
-                                    >
+                                    <ActionButton className={`${styles.actionBtn} ${styles.actionBtnGhost}`}>
                                         🗑️
-                                    </button>
+                                    </ActionButton>
                                 </form>
                             </div>
                         </div>

@@ -2,6 +2,7 @@ import {
     getSkills, getEducationStats, addSkill, deleteSkill, updateSkillLevel,
     getCourses, addCourse, toggleCourseStatus, deleteCourse,
 } from "../../../../lib/education";
+import { SubmitButton, ActionButton } from "./FormButtons";
 import styles from "./Sections.module.css";
 
 const LEVEL_LABELS = [
@@ -94,7 +95,7 @@ export default async function EducationSection({ userId }) {
                         </select>
                     </div>
                     <div className={styles.formField}>
-                        <button type="submit" className={styles.formButton}>+ Add Skill</button>
+                        <SubmitButton pendingText="Adding...">+ Add Skill</SubmitButton>
                     </div>
                 </form>
             </div>
@@ -131,7 +132,7 @@ export default async function EducationSection({ userId }) {
                             <input name="url" type="url" placeholder="https://..." className={styles.formInput} />
                         </div>
                         <div className={styles.formField}>
-                            <button type="submit" className={styles.formButton}>+ Add Course</button>
+                            <SubmitButton pendingText="Adding...">+ Add Course</SubmitButton>
                         </div>
                     </form>
                 </div>
@@ -170,9 +171,9 @@ export default async function EducationSection({ userId }) {
                                                 <option key={i} value={i}>Lvl {i}</option>
                                             ))}
                                         </select>
-                                        <button type="submit" className={styles.taskFormButton}>
+                                        <SubmitButton pendingText="..." className={styles.taskFormButton}>
                                             Set
-                                        </button>
+                                        </SubmitButton>
                                     </form>
                                     <span
                                         className={styles.badge}
@@ -186,13 +187,9 @@ export default async function EducationSection({ userId }) {
                                     <form action={deleteSkill} style={{ display: "inline" }}>
                                         <input type="hidden" name="skillId" value={skill.id} />
                                         <input type="hidden" name="userId" value={userId} />
-                                        <button
-                                            type="submit"
-                                            title="Delete skill and its courses"
-                                            className={`${styles.actionBtn} ${styles.actionBtnGhost}`}
-                                        >
+                                        <ActionButton className={`${styles.actionBtn} ${styles.actionBtnGhost}`}>
                                             🗑️
-                                        </button>
+                                        </ActionButton>
                                     </form>
                                 </div>
                             </div>
@@ -209,20 +206,11 @@ export default async function EducationSection({ userId }) {
                                             <form action={toggleCourseStatus}>
                                                 <input type="hidden" name="courseId" value={course.id} />
                                                 <input type="hidden" name="userId" value={userId} />
-                                                <button
-                                                    type="submit"
-                                                    title={`Status: ${statusLabels[course.status]} — click to change`}
-                                                    style={{
-                                                        background: "none",
-                                                        border: "none",
-                                                        cursor: "pointer",
-                                                        fontSize: "18px",
-                                                        padding: "2px",
-                                                        flexShrink: 0,
-                                                    }}
+                                                <ActionButton
+                                                    className={styles.courseStatusBtn}
                                                 >
                                                     {statusIcons[course.status]}
-                                                </button>
+                                                </ActionButton>
                                             </form>
                                             <div className={styles.listItemDetails}>
                                                 <div
@@ -255,13 +243,9 @@ export default async function EducationSection({ userId }) {
                                             <form action={deleteCourse}>
                                                 <input type="hidden" name="courseId" value={course.id} />
                                                 <input type="hidden" name="userId" value={userId} />
-                                                <button
-                                                    type="submit"
-                                                    title="Delete course"
-                                                    className={`${styles.actionBtn} ${styles.actionBtnGhost}`}
-                                                >
+                                                <ActionButton className={`${styles.actionBtn} ${styles.actionBtnGhost}`}>
                                                     ✕
-                                                </button>
+                                                </ActionButton>
                                             </form>
                                         </div>
                                     </div>

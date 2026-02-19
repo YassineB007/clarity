@@ -884,3 +884,88 @@
         padding: 14px;
     }
 }
+
+/* ==============================
+   Pending / Spinner States
+   ============================== */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pendingContent {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(245, 240, 230, 0.3);
+    border-top-color: #f5f0e6;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    flex-shrink: 0;
+}
+
+.spinnerSmall {
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #2f4f2f;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* ==============================
+   Checkbox & Course Status
+   ============================== */
+.checkboxDone,
+.checkboxTodo {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    padding: 0;
+    transition: opacity 0.2s ease;
+}
+
+.checkboxDone {
+    border: 2px solid #10b981;
+    background: #10b981;
+    color: #fff;
+}
+
+.checkboxTodo {
+    border: 2px solid #d0cdc7;
+    background: transparent;
+    color: transparent;
+}
+
+.checkboxDone:disabled,
+.checkboxTodo:disabled {
+    opacity: 0.5;
+}
+
+.courseStatusBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 2px;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+.courseStatusBtn:disabled {
+    opacity: 0.4;
+}
